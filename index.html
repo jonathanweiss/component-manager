@@ -3,13 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>Component Manger | Demo</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js" integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8=" crossorigin="anonymous"></script>
     <script src="src/manager.js"></script>
-    <script type="text/javascript">
-        console.log(window)
-    </script>
+    <script src="demo/ReverserController.js"></script>
+
   </head>
 
   <body>
+    <h1>Demo</h1>
+    <p data-component-name="Reverser"><span>Lorem</span> <span>ipsum</span> <span>dolor</span> <span>sit</span> <span>amet,</span> <span>consectetur</span> <span>adipisicing</span> <span>elit.</span> <span>Assumenda</span> <span>aliquam</span> <span>eveniet</span> <span>facilis</span> <span>aspernatur</span> <span>eum,</span> <span>libero</span> <span>perferendis</span> <span>reprehenderit</span> <span>praesentium</span> <span>maiores</span> <span>temporibus</span> <span>nihil</span> <span>officiis</span> <span>accusamus</span> <span>aperiam,</span> <span>totam</span> <span>officia,</span> <span>harum</span> <span>tenetur</span> <span>quisquam.</span> <span>Rerum.</span> </p>
   </body>
+
+<script type="text/javascript">
+    ComponentManager.init();
+    ReverserController.init();
+</script>
 
 </html>

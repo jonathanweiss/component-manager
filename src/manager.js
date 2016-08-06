@@ -1,13 +1,13 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
-        define(['jquery'], factory);
+        define('ComponentManager', ['jquery'], factory);
     } else if (typeof exports === 'object') {
         // Node, CommonJS-like
         module.exports = factory(require('jquery'));
     } else {
         // Browser globals (root is window)
-        root.ComponentManager = factory(root.jQuery);
+        root.ComponentManager = factory(root.jQuery, root.ComponentManager);
     }
 }(this, function ($) {
   var _registeredComponents = {};
@@ -43,7 +43,7 @@
     _registeredComponents[name] = {
       priority: priority,
       onAdd: callbackAdd,
-      onRemove: callbackRemove ? callbackRemove : null
+      onRemove: callbackRemove ? callbackRemove : $.noop
     };
   };
 
