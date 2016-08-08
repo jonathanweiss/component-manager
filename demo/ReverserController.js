@@ -11,8 +11,24 @@
     }
 }(this, function ($) {
 
-  var init = function() {
+  var createInstance = function($collection) {
+  };
+
+  var removeInstance = function($collection) {
+  };
+
+  var reverseText = function() {
     debugger;
+  };
+
+  var bindEvent = function() {
+    $('body').on('click', '[data-component-name="Reverser"] span', reverseText);
+  };
+
+  var init = function() {
+    ComponentManager.register('Reverser', 100, createInstance, removeInstance);
+
+    bindEvent();
   };
 
   return {

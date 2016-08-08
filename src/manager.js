@@ -39,7 +39,7 @@
     });
   };
 
-  var registerComponent = function (name, priority, callbackAdd, callbackRemove) {
+  var register = function (name, priority, callbackAdd, callbackRemove) {
     _registeredComponents[name] = {
       priority: priority,
       onAdd: callbackAdd,
@@ -57,7 +57,7 @@
 
   return {
     init: init,
-    registerComponent: registerComponent
+    register: register
   };
 
 }));
