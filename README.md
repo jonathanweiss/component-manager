@@ -50,14 +50,106 @@ $.get('/server/foo/bar', function(markup) {
 
 Not only must the little snippet know all about the components that are use, but also about the destructors and how to call them.
 
-## "Automagic" handling of creating and destroying instances
+## Creating and destroying instances "automagically"
 
 ComponentManger solves all these problems by creating instances for DOM nodes as soon as they are inserted into the DOM. It also takes care of calling the destructor functions when a DOM node is removed from the DOM.
 
 ComponentManager has zero dependencies and uses a universal JavaScript module to be used in any environments. It depends on `MutationOberserver` which is supported by all modern browser.
 
-### Creating instances
+### Registering a component
 
+Example 4: Register a new component and provide callback for creating instances:
 
+```
+var createTab = function(node) {
+  $(node).tabs();
+};
 
-### Executing destructors
+var removeTab = function(node) {
+  $(node).tabs('destroy');
+}
+
+CoreManager.register('.tabs', 10, createTab, removeTab);
+```
+
+Every time a DOM node with the CSS class `tabs` is added to the DOM, `crateTab()` is executed with this node as parameter. As soon as a DOM node with the CSS class `tabs` is removed, `removeTabs()` (with the node as payload).
+
+The second argument is a numeric priority (with `0` being the highest) that can be used if components depend on each other and therefore must be initialised in a specific order.
+
+### Bringing it all together
+
+Example 5: Registering a component and using it
+
+```
+var createTab = function(node) {
+  $(node).tabs();
+};
+
+var removeTab = function(node) {
+  $(node).tabs('destroy');
+}
+
+CoreManager.register('.tabs', 10, createTab, removeTab);
+
+$.get('/server/foo/bar', function(markup) {
+  $('#theTargetNode').html(markup);
+});
+
+```
+
+We've successfully decoupled loading markup into the DOM with the creation of instances of the jQuery tab plugin. The small snippet that loads markup into the page doesn't need to know about components and the ComponentManger doesn't need to know any specifics about how a component works.
+Any specific code can, of course, be used in the callbacks.
+
+Example 6: How to use component-specific code in a callback:
+
+```
+var createTab = function(node) {
+  var $node = $(node);
+  var options = $node.data('options');
+
+  $node.tabs(options);
+};
+```
+
+## Gotchas
+Please not that due to the nature of `MutationObserver` the callbacks for creating and removing instances will be called asynchronously.
+
+Example 7: Instances are used too early:
+
+```
+// see Example 5 for the code of the callbacks
+CoreManager.register('.tabs', 10, createTab, removeTab);
+
+$.get('/server/foo/bar', function(markup) {
+  $('#theTargetNode').html(markup);
+  $('#theTargetNode .tabs').eq(0).tabs('load', '#foo'); // <-Uncaught TypeError: $(...).tabs is not a function
+});
+
+```
+
+There are many solutions to wait for the `MutationObserver` to finish working before using the instances from a (somewhat sloppy) `setTimeout()` to using event.
+
+Example 8: Wait for event before using instances
+
+```
+var createTab = function(node) {
+  $(node)
+  	.tabs()
+  	.trigger('TabCreated');
+};
+
+var removeTab = function(node) {
+  $(node).tabs('destroy');
+}
+
+CoreManager.register('.tabs', 10, createTab, removeTab);
+
+$.get('/server/foo/bar', function(markup) {
+  $('#theTargetNode')
+  	html(markup)
+  	.one('TabCreated', '.tabs', function() {
+      $('#theTargetNode .tabs').eq(0).tabs('load', '#foo');
+    });
+});
+
+```
