@@ -10,8 +10,10 @@
         root.ComponentManager = factory();
     }
 }(this, function () {
-  var _registeredComponents = {};
-  var _observer = null;
+  var registeredComponents = {};
+  var observer = null;
+
+  var DATA_ATTRIBUTE = 'data-component-name';
 
   /**
    * Reacts to changes to the DOM and calls the designated callbacks to create or delete instances
@@ -22,20 +24,20 @@
     mutations.forEach(function (mutation) {
 
       [].slice.call(mutation.addedNodes).forEach(function(addedNode) {
-        addedNode.tagName && [].slice.call(addedNode.querySelectorAll('[data-component-name]')).forEach(function(specificNode) {
-            var componentName = specificNode.getAttribute('data-component-name');
-            if (_registeredComponents[componentName]) {
-                _registeredComponents[componentName].onAdd(specificNode);
+        addedNode.tagName && [].slice.call(addedNode.querySelectorAll('[' + DATA_ATTRIBUTE + ']')).forEach(function(specificNode) {
+            var componentName = specificNode.getAttribute(DATA_ATTRIBUTE);
+            if (registeredComponents[componentName]) {
+                registeredComponents[componentName].onAdd(specificNode);
             }
         });
 
       });
 
       [].slice.call(mutation.removedNodes).forEach(function(removedNode) {
-        removedNode.tagName && [].slice.call(removedNode.querySelectorAll('[data-component-name]')).forEach(function(specificNode) {
-            var componentName = specificNode.getAttribute('data-component-name');
-            if (_registeredComponents[componentName]) {
-                _registeredComponents[componentName].onRemove(specificNode);
+        removedNode.tagName && [].slice.call(removedNode.querySelectorAll('[' + DATA_ATTRIBUTE + ']')).forEach(function(specificNode) {
+            var componentName = specificNode.getAttribute(DATA_ATTRIBUTE);
+            if (registeredComponents[componentName]) {
+                registeredComponents[componentName].onRemove(specificNode);
             }
         });
       });
@@ -52,7 +54,7 @@
    * @return {undefined}
    */
   var register = function (name, priority, callbackAdd, callbackRemove) {
-    _registeredComponents[name] = {
+    registeredComponents[name] = {
       priority: priority,
       onAdd: callbackAdd,
       onRemove: callbackRemove ? callbackRemove : function(){}
@@ -60,8 +62,8 @@
   };
 
   var init = function () {
-    _observer = new MutationObserver(_onDomChange);
-    _observer.observe(document.body, {
+    observer = new MutationObserver(_onDomChange);
+    observer.observe(document.body, {
       childList: true,
       subtree: true
     });
