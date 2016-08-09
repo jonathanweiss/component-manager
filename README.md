@@ -69,7 +69,7 @@ var removeTab = function(node) {
   $(node).tabs('destroy');
 }
 
-CoreManager.register('.tabs', 10, createTab, removeTab);
+CoreManager.register('tabs', 10, createTab, removeTab);
 ```
 
 Every time a DOM node with the CSS class `tabs` is added to the DOM, `crateTab()` is executed with this node as parameter. As soon as a DOM node with the CSS class `tabs` is removed, `removeTabs()` (with the node as payload).
@@ -89,7 +89,7 @@ var removeTab = function(node) {
   $(node).tabs('destroy');
 }
 
-CoreManager.register('.tabs', 10, createTab, removeTab);
+CoreManager.register('tabs', 10, createTab, removeTab);
 
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode').html(markup);
@@ -118,7 +118,7 @@ Example 7: Instances are used too early:
 
 ```
 // see Example 5 for the code of the callbacks
-CoreManager.register('.tabs', 10, createTab, removeTab);
+CoreManager.register('tabs', 10, createTab, removeTab);
 
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode').html(markup);
@@ -142,7 +142,7 @@ var removeTab = function(node) {
   $(node).tabs('destroy');
 }
 
-CoreManager.register('.tabs', 10, createTab, removeTab);
+CoreManager.register('tabs', 10, createTab, removeTab);
 
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode')

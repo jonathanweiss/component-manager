@@ -1,15 +1,15 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
-        define('ComponentManager', ['jquery'], factory);
+        define('ComponentManager', [], factory);
     } else if (typeof exports === 'object') {
         // Node, CommonJS-like
-        module.exports = factory(require('jquery'));
+        module.exports = factory();
     } else {
         // Browser globals (root is window)
-        root.ComponentManager = factory(root.jQuery, root.ComponentManager);
+        root.ComponentManager = factory();
     }
-}(this, function ($) {
+}(this, function () {
   var _registeredComponents = {};
   var _observer = null;
 
@@ -20,25 +20,24 @@
    */
   var _onDomChange = function (mutations) {
     mutations.forEach(function (mutation) {
-      var addedComponents = $(mutation.addedNodes).find('[data-component-name]');
-      var removedComponents = $(mutation.removedNodes).find('[data-component-name]');
 
-      addedComponents.each(function () {
-        var $element = $(this);
-        var componentName = $element.attr('[data-component-name]');
+      [].slice.call(mutation.addedNodes).forEach(function(addedNode) {
+        addedNode.tagName && [].slice.call(addedNode.querySelectorAll('[data-component-name]')).forEach(function(specificNode) {
+            var componentName = specificNode.getAttribute('data-component-name');
+            if (_registeredComponents[componentName]) {
+                _registeredComponents[componentName].onAdd(specificNode);
+            }
+        });
 
-        if (_registeredComponents[componentName]) {
-          _registeredComponents[componentName].onAdd($element)
-        }
       });
 
-      removedComponents.each(function (index, element) {
-        var $element = $(this);
-        var componentName = $element.attr('[data-component-name]');
-
-        if (_registeredComponents[componentName]) {
-          _registeredComponents[componentName].onRemove($element)
-        }
+      [].slice.call(mutation.removedNodes).forEach(function(removedNode) {
+        removedNode.tagName && [].slice.call(removedNode.querySelectorAll('[data-component-name]')).forEach(function(specificNode) {
+            var componentName = specificNode.getAttribute('data-component-name');
+            if (_registeredComponents[componentName]) {
+                _registeredComponents[componentName].onRemove(specificNode);
+            }
+        });
       });
 
     });
@@ -46,23 +45,23 @@
 
   /**
    * Registers a component
-   * @param {String} selector Selector to identify the component
+   * @param {String} name Name to identify the component; is used as a data attribute on target nodes
    * @param {Number} priority Order in which the components will be initialised
    * @param {Function} callbackAdd Function that will be executed when a DOM node matching the selector is added to the document
-   * @param {Function} callbackRemove Function that will be executed when a DOM node matching the selector is removed from the document
+   * @param {[Function=undefined]} callbackRemove Function that will be executed when a DOM node matching the selector is removed from the document
    * @return {undefined}
    */
-  var register = function (selector, priority, callbackAdd, callbackRemove) {
+  var register = function (name, priority, callbackAdd, callbackRemove) {
     _registeredComponents[name] = {
       priority: priority,
       onAdd: callbackAdd,
-      onRemove: callbackRemove ? callbackRemove : $.noop
+      onRemove: callbackRemove ? callbackRemove : function(){}
     };
   };
 
   var init = function () {
     _observer = new MutationObserver(_onDomChange);
-    _observer.observe(document.body.get(0), {
+    _observer.observe(document.body, {
       childList: true,
       subtree: true
     });

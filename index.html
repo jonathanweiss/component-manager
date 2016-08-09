@@ -11,12 +11,22 @@
 
   <body>
     <h1>Demo</h1>
-    <p data-component-name="Reverser"><span>Lorem</span> <span>ipsum</span> <span>dolor</span> <span>sit</span> <span>amet,</span> <span>consectetur</span> <span>adipisicing</span> <span>elit.</span> <span>Assumenda</span> <span>aliquam</span> <span>eveniet</span> <span>facilis</span> <span>aspernatur</span> <span>eum,</span> <span>libero</span> <span>perferendis</span> <span>reprehenderit</span> <span>praesentium</span> <span>maiores</span> <span>temporibus</span> <span>nihil</span> <span>officiis</span> <span>accusamus</span> <span>aperiam,</span> <span>totam</span> <span>officia,</span> <span>harum</span> <span>tenetur</span> <span>quisquam.</span> <span>Rerum.</span> </p>
+    <button id="addComponent">Add component</button>
+
   </body>
 
 <script type="text/javascript">
+    var addComponent = function() {
+        var divElement = document.createElement('div');
+        divElement.innerHTML = '<p data-component-name="reverser"><span>Lorem</span> <span>ipsum</span> <span>dolor</span> <span>sit</span> <span>amet,</span> <span>consectetur</span> <span>adipisicing</span> <span>elit.</span> <span>Assumenda</span> <span>aliquam</span> <span>eveniet</span> <span>facilis</span> <span>aspernatur</span> <span>eum,</span> <span>libero</span> <span>perferendis</span> <span>reprehenderit</span> <span>praesentium</span> <span>maiores</span> <span>temporibus</span> <span>nihil</span> <span>officiis</span> <span>accusamus</span> <span>aperiam,</span> <span>totam</span> <span>officia,</span> <span>harum</span> <span>tenetur</span> <span>quisquam.</span> <span>Rerum.</span> </p>';
+
+        document.body.appendChild(divElement);
+    };
+
     ComponentManager.init();
     ReverserController.init();
+
+    document.querySelector('#addComponent').addEventListener('click', addComponent, false);
 </script>
 
 </html>

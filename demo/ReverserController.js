@@ -12,6 +12,7 @@
 }(this, function ($) {
 
   var createInstance = function($collection) {
+    console.log($collection)
   };
 
   var removeInstance = function($collection) {
@@ -26,7 +27,7 @@
   };
 
   var init = function() {
-    ComponentManager.register('Reverser', 100, createInstance, removeInstance);
+    ComponentManager.register('reverser', 100, createInstance, removeInstance);
 
     bindEvent();
   };
