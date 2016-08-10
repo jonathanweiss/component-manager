@@ -11,30 +11,29 @@
     }
 }(this, function ($) {
 
-  var createInstance = function($collection) {
-    console.log($collection)
-  };
+    var createInstance = function($collection) {
+        console.log($collection)
+    };
 
-  var removeInstance = function($collection) {
-  };
+    var removeInstance = function($collection) {
+    };
 
-  var reverseText = function() {
-    debugger;
-  };
+    var reverseText = function() {
+        debugger;
+    };
 
-  var bindEvent = function() {
-    $('body').on('click', '[data-component-name="Reverser"] span', reverseText);
-  };
+    var bindEvent = function() {
+        $('body').on('click', '[data-component-name="Reverser"] span', reverseText);
+    };
 
-  var init = function() {
-    ComponentManager.register('reverser', 100, createInstance, removeInstance);
+    var init = function() {
+        ComponentManager.register('reverser', 100, createInstance, removeInstance);
+        bindEvent();
+    };
 
-    bindEvent();
-  };
-
-  return {
-    init: init
-  };
+    return {
+        init: init
+    };
 
 }));
 
