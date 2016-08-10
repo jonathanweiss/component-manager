@@ -10,10 +10,9 @@
         root.ComponentManager = factory();
     }
 }(this, function () {
+  var DATA_ATTRIBUTE = 'data-component-name';
   var registeredComponents = {};
   var observer = null;
-
-  var DATA_ATTRIBUTE = 'data-component-name';
 
   /**
    * Reacts to changes to the DOM and calls the designated callbacks to create or delete instances
@@ -22,24 +21,26 @@
    */
   var _onDomChange = function (mutations) {
     mutations.forEach(function (mutation) {
-
       [].slice.call(mutation.addedNodes).forEach(function(addedNode) {
-        addedNode.tagName && [].slice.call(addedNode.querySelectorAll('[' + DATA_ATTRIBUTE + ']')).forEach(function(specificNode) {
-            var componentName = specificNode.getAttribute(DATA_ATTRIBUTE);
-            if (registeredComponents[componentName]) {
-                registeredComponents[componentName].onAdd(specificNode);
-            }
-        });
-
+        if (addedNode.tagName) {
+            [].slice.call(addedNode.querySelectorAll('[' + DATA_ATTRIBUTE + ']')).forEach(function(specificNode) {
+                var componentName = specificNode.getAttribute(DATA_ATTRIBUTE);
+                if (registeredComponents[componentName]) {
+                    registeredComponents[componentName].onAdd(specificNode);
+                }
+            });
+        }
       });
 
       [].slice.call(mutation.removedNodes).forEach(function(removedNode) {
-        removedNode.tagName && [].slice.call(removedNode.querySelectorAll('[' + DATA_ATTRIBUTE + ']')).forEach(function(specificNode) {
-            var componentName = specificNode.getAttribute(DATA_ATTRIBUTE);
-            if (registeredComponents[componentName]) {
-                registeredComponents[componentName].onRemove(specificNode);
-            }
-        });
+        if (removedNode.tagName) {
+            [].slice.call(removedNode.querySelectorAll('[' + DATA_ATTRIBUTE + ']')).forEach(function(specificNode) {
+                var componentName = specificNode.getAttribute(DATA_ATTRIBUTE);
+                if (registeredComponents[componentName]) {
+                    registeredComponents[componentName].onRemove(specificNode);
+                }
+            });
+        }
       });
 
     });
@@ -61,18 +62,32 @@
     };
   };
 
+  /**
+   * Starts listening to changes to the DOM
+   * @return {undefined}
+   */
   var init = function () {
     observer = new MutationObserver(_onDomChange);
     observer.observe(document.body, {
       childList: true,
       subtree: true
     });
-  }
+  };
+
+  /**
+   * Stops listening to changes to the DOM
+   * @return {undefined}
+   */
+  var shutdown = function() {
+      if (observer) {
+        observer.disconnect();
+      }
+  };
 
   return {
     init: init,
-    register: register
+    register: register,
+    shutdown: shutdown
   };
 
 }));
-
