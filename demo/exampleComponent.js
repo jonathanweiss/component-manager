@@ -7,28 +7,27 @@
         module.exports = factory(require('jquery'), require('ComponentManager'));
     } else {
         // Browser globals (root is window)
-        root.ReverserController = factory(root.jQuery, root.ComponentManager);
+        root.ExampleComponent = factory(root.jQuery, root.ComponentManager);
     }
 }(this, function ($) {
 
-    var createInstance = function($collection) {
-        console.log($collection)
+    var createInstance = function(node) {
+        $(node).on('click', 'span', reverseText);
     };
 
-    var removeInstance = function($collection) {
+    var removeInstance = function(node) {
+        $(node).off('click', 'span', reverseText);
     };
 
-    var reverseText = function() {
-        debugger;
-    };
+    var reverseText = function(clickEvent) {
+        var $target = $(clickEvent.target);
+        var text = $target.text();
 
-    var bindEvent = function() {
-        $('body').on('click', '[data-component-name="Reverser"] span', reverseText);
+        $target.html(text.split('').reverse().join(''));
     };
 
     var init = function() {
         ComponentManager.register('reverser', 100, createInstance, removeInstance);
-        bindEvent();
     };
 
     return {
