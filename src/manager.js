@@ -1,4 +1,4 @@
-(function (root, factory) {
+(function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
         define('ComponentManager', [], factory);
@@ -9,7 +9,7 @@
         // Browser globals (root is window)
         root.ComponentManager = factory();
     }
-}(this, function () {
+}(this, function() {
   var DATA_ATTRIBUTE = 'data-component-name';
   var registeredComponents = {};
   var observer = null;
@@ -19,8 +19,8 @@
     * @param {Array} A list of {@link https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord|MutationRecords}
     * @return {undefined}
     */
-    var _onDomChange = function (mutations) {
-        mutations.forEach(function (mutation) {
+    var _onDomChange = function(mutations) {
+        mutations.forEach(function(mutation) {
 
             [].slice.call(mutation.addedNodes).forEach(function(addedNode) {
                 if (addedNode.tagName) {
@@ -50,14 +50,12 @@
     /**
     * Registers a component
     * @param {String} name Name to identify the component; is used as a data attribute on target nodes
-    * @param {Number} priority Order in which the components will be initialised
     * @param {Function} callbackAdd Function that will be executed when a DOM node matching the selector is added to the document
     * @param {[Function=undefined]} callbackRemove Function that will be executed when a DOM node matching the selector is removed from the document
     * @return {undefined}
     */
-    var register = function (name, priority, callbackAdd, callbackRemove) {
+    var register = function(name, callbackAdd, callbackRemove) {
         registeredComponents[name] = {
-            priority: priority,
             onAdd: callbackAdd,
             onRemove: callbackRemove ? callbackRemove : function(){}
         };
@@ -67,7 +65,7 @@
     * Starts listening to changes to the DOM
     * @return {undefined}
     */
-    var init = function () {
+    var init = function() {
         observer = new MutationObserver(_onDomChange);
         observer.observe(document.body, {
             childList: true,

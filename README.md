@@ -69,12 +69,10 @@ var removeTab = function(node) {
   $(node).tabs('destroy');
 }
 
-CoreManager.register('tabs', 10, createTab, removeTab);
+CoreManager.register('tabs', createTab, removeTab);
 ```
 
 Every time a DOM node with the CSS class `tabs` is added to the DOM, `crateTab()` is executed with this node as parameter. As soon as a DOM node with the CSS class `tabs` is removed, `removeTabs()` (with the node as payload).
-
-The second argument is a numeric priority (with `0` being the highest) that can be used if components depend on each other and therefore must be initialised in a specific order.
 
 ### Bringing it all together
 
@@ -89,7 +87,7 @@ var removeTab = function(node) {
   $(node).tabs('destroy');
 }
 
-CoreManager.register('tabs', 10, createTab, removeTab);
+CoreManager.register('tabs', createTab, removeTab);
 
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode').html(markup);
@@ -118,7 +116,7 @@ Example 7: Instances are used too early:
 
 ```
 // see Example 5 for the code of the callbacks
-CoreManager.register('tabs', 10, createTab, removeTab);
+CoreManager.register('tabs', createTab, removeTab);
 
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode').html(markup);
@@ -142,7 +140,7 @@ var removeTab = function(node) {
   $(node).tabs('destroy');
 }
 
-CoreManager.register('tabs', 10, createTab, removeTab);
+CoreManager.register('tabs', createTab, removeTab);
 
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode')
