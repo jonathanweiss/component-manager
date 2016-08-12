@@ -1,0 +1,25 @@
+{
+  "name": "component-manager",
+  "version": "1.0.0",
+  "homepage": "https://github.com/jonathanweiss/component-manager",
+  "authors": [
+    "Jonathan Weiß <bitbucket@jonathanweiss.net>"
+  ],
+  "description": "Micro utility (402 bytes compressed) that manages initialising and teardown of components (e.g. jQuery plugins) as soon as specific DOM nodes are added into the document, respectively removed from it.",
+  "main": "./src/manager.js",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
