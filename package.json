@@ -1,0 +1,19 @@
+{
+  "name": "verwalter",
+  "version": "1.0.0",
+  "description": "Micro utility (402 bytes compressed) that manages initialising and teardown of components (e.g. jQuery plugins) as soon as specific DOM nodes are added into the document, respectively removed from it.",
+  "main": "./src/manager.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathanweiss/component-manager.git"
+  },
+  "author": "Jonathan Weiß",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonathanweiss/component-manager/issues"
+  },
+  "homepage": "https://github.com/jonathanweiss/component-manager#readme"
+}
