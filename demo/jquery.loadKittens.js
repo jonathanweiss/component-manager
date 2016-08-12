@@ -26,7 +26,7 @@
 
     Plugin.prototype.destroy = function() {
         window.clearInterval(this.intervalHandle);
-        this.$element.removeData();
+        $(this.element).removeData();
     };
 
     $.fn[pluginName] = function() {
