@@ -1,3 +1,8 @@
+/*! ComponentManager - v1.0.0
+ * https://github.com/jonathanweiss/component-manager
+ * Copyright (c) 2016 https://github.com/jonathanweiss/component-manager/authors.txt
+ * License: MIT
+ */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
