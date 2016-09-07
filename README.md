@@ -1,7 +1,7 @@
 # ComponentManager
 
 ## What is this?
-Uutility that takes care of creating and destroying instances (e.g. of jQuery plugins) as soon as specific DOM nodes are added to the document, respectively removed from the document.
+Utility that takes care of creating and destroying instances (e.g. of jQuery plugins) as soon as specific DOM nodes are added to the document, respectively removed from the document.
 Universal  minimal (1.2 KB, 583 bytes compressed) helper with zero dependencies.
 
 ## (Longer) Introduction

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.1] - 2016-09-07
+### Changed
+- Fixed typo in Readme
+
 ## [1.1.0] - 2016-09-07
 ### Added
 - Optional parameter "priority" for `register()` allows prioritisation of component initialisation
