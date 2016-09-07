@@ -2,7 +2,7 @@
 
 ## What is this?
 Uutility that takes care of creating and destroying instances (e.g. of jQuery plugins) as soon as specific DOM nodes are added to the document, respectively removed from the document.
-Universal  minimal (819 bytes, 402 bytes compressed) helper with zero dependencies.
+Universal  minimal (1.2 KB, 583 bytes compressed) helper with zero dependencies.
 
 ## (Longer) Introduction
 Many websites or web apps examine the DOM and create instances (e.g. of jQuery plugins) for specific DOM nodes during the initial load. Often a class name indicates what kind of instance should be created for a specific DOM Node.
