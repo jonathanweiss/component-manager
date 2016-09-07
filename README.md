@@ -110,10 +110,24 @@ var createTab = function(node) {
 };
 ```
 
+## Prioritisation of component initialisation
+Sometimes one component depends on another and therefore they should be initialised in a specific manner. If you need a specific order you can use the optional fourth argument when registering a component. A lower number indicates a higher priority.
+
+
+Example 7: Components can have a priority when they are registered
+
+```
+CoreManager.register('tabs', createTab, removeTab, 10);
+CoreManager.register('gmaps', createGmap, removeGmap, 20);
+
+```
+
+You can also have a look at the second demo to see this in action.
+
 ## Gotchas
 Please not that due to the nature of `MutationObserver` the callbacks for creating and removing instances will be called asynchronously.
 
-Example 7: Instances are used too early:
+Example 8: Instances are used too early:
 
 ```
 // see Example 5 for the code of the callbacks
@@ -128,7 +142,7 @@ $.get('/server/foo/bar', function(markup) {
 
 There are many solutions to wait for the `MutationObserver` to finish working before using the instances from a (somewhat sloppy) `setTimeout()` to using event.
 
-Example 8: Wait for event before using instances
+Example 9: Wait for event before using instances
 
 ```
 var createTab = function(node) {
