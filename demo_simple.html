@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ComponentManger | Demo</title>
+    <link href='https://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
+
+    <style type="text/css">
+        * {
+            font-family: 'Crimson Text', serif;
+        }
+
+        button {
+            font-size: 1rem;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js" integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8=" crossorigin="anonymous"></script>
+    <script src="src/manager.js"></script>
+    <script src="demo/jquery.loadKittens.js"></script>
+    <script src="demo/jquery.fakeLatin.js"></script>
+  </head>
+
+  <body>
+    <h1>Demo</h1>
+    <button id="addComponent">Add random component</button>
+    <button id="removeComponent">Remove last component</button>
+
+    <div id="component-container"></div>
+
+    <script type="text/javascript">
+        // Register the first component: a simple jQuery plugin that loads images of kittens
+        ComponentManager.register(
+            'loadkittens',
+            function(addedNode) {
+                // If the plugins uses options, those can be passed to the plugin here
+                $(addedNode).loadKittens();
+            },
+            function(removedNode) {
+                // Call the destructor to allow the plugin to tear down
+                $(removedNode).data('plugin_loadKittens').destroy();
+            }
+        );
+
+        // Register the second component: a simple jQuery plugin that displays parts of "lorem ipsum"
+        ComponentManager.register(
+            'fakelatin',
+            function(addedNode) {
+                $(addedNode).fakeLatin();
+            },
+            function(removedNode) {
+                $(removedNode).data('plugin_fakeLatin').destroy();
+            }
+        );
+
+        // Tell the component manager to start listening for changes to the DOM
+        ComponentManager.init();
+
+
+
+
+
+
+
+        // UI code for this demo
+        var addComponent = function() {
+            var divElement = document.createElement('div');
+            var componentName = Math.round(Math.random()) === 1 ? 'loadkittens' : 'fakelatin';
+
+            divElement.innerHTML = '<div data-component-name="' + componentName + '"></div>';
+
+            document.body.querySelector('#component-container').appendChild(divElement);
+        };
+
+        var removeComponent = function () {
+            var container = document.body.querySelector('#component-container');
+            var components = container.childNodes;
+
+            if (components.length) {
+                container.removeChild(components[components.length - 1]);
+            }
+        };
+
+        document.querySelector('#addComponent').addEventListener('click', addComponent, false);
+        document.querySelector('#removeComponent').addEventListener('click', removeComponent, false);
+    </script>
+  </body>
+
+</html>
