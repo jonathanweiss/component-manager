@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Added
+- Badges with information about license, version and file size to README.md
+
 ## [1.1.1] - 2016-09-07
 ### Changed
 - Fixed typo in Readme
