@@ -130,7 +130,7 @@ CoreManager.register('gmaps', createGmap, removeGmap, 20);
 You can also have a look at the second demo to see this in action.
 
 ## Gotchas
-Please not that due to the nature of `MutationObserver` the callbacks for creating and removing instances will be called asynchronously.
+Please note that due to the nature of `MutationObserver` the callbacks for creating and removing instances will be called asynchronously.
 
 Example 8: Instances are used too early:
 
