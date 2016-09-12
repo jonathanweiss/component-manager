@@ -15,13 +15,15 @@ Many websites or web apps examine the DOM and create instances (e.g. of jQuery p
 ### Creation of instances during runtime
 Example 1: Tabs that use a jQuery plugin:
 
-`$('.tabs').tabs();`
+```javascript
+$('.tabs').tabs();
+```
 
 While this works fine for the markup that is present at the time the website or web app is loaded, dealing with dynamic markup is more complicated. Every time new DOM nodes are loaded into the document one must take care that instances for those new nodes are also created.
 
 Example 2: new markup is loaded into the page:
 
-```
+```javascript
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode')
     .html(markup)
@@ -43,7 +45,7 @@ Many components need a destructor to clean up variables or unbind from events to
 
 Example 3: load markup and clean up before the new markup is added:
 
-```
+```javascript
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode')
     .find('.tabs').tabs('destroy');
@@ -66,7 +68,7 @@ ComponentManager has zero dependencies and uses a universal JavaScript module to
 
 Example 4: Register a new component and provide callback for creating instances:
 
-```
+```javascript
 var createTab = function(node) {
   $(node).tabs();
 };
@@ -84,7 +86,7 @@ Every time a DOM node with the CSS class `tabs` is added to the DOM, `crateTab()
 
 Example 5: Registering a component and using it
 
-```
+```javascript
 var createTab = function(node) {
   $(node).tabs();
 };
@@ -98,7 +100,6 @@ CoreManager.register('tabs', createTab, removeTab);
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode').html(markup);
 });
-
 ```
 
 We've successfully decoupled loading markup into the DOM with the creation of instances of the jQuery tab plugin. The small snippet that loads markup into the page doesn't need to know about components and the ComponentManger doesn't need to know any specifics about how a component works.
@@ -106,7 +107,7 @@ Any specific code can, of course, be used in the callbacks.
 
 Example 6: How to use component-specific code in a callback:
 
-```
+```javascript
 var createTab = function(node) {
   var $node = $(node);
   var options = $node.data('options');
@@ -121,10 +122,9 @@ Sometimes one component depends on another and therefore they should be initiali
 
 Example 7: Components can have a priority when they are registered
 
-```
+```javascript
 CoreManager.register('tabs', createTab, removeTab, 10);
 CoreManager.register('gmaps', createGmap, removeGmap, 20);
-
 ```
 
 You can also have a look at the second demo to see this in action.
@@ -134,7 +134,7 @@ Please not that due to the nature of `MutationObserver` the callbacks for creati
 
 Example 8: Instances are used too early:
 
-```
+```javascript
 // see Example 5 for the code of the callbacks
 CoreManager.register('tabs', createTab, removeTab);
 
@@ -142,14 +142,13 @@ $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode').html(markup);
   $('#theTargetNode .tabs').eq(0).tabs('load', '#foo'); // <-Uncaught TypeError: $(...).tabs is not a function
 });
-
 ```
 
 There are many solutions to wait for the `MutationObserver` to finish working before using the instances from a (somewhat sloppy) `setTimeout()` to using event.
 
 Example 9: Wait for event before using instances
 
-```
+```javascript
 var createTab = function(node) {
   $(node)
     .tabs()
@@ -169,5 +168,5 @@ $.get('/server/foo/bar', function(markup) {
       $('#theTargetNode .tabs').eq(0).tabs('load', '#foo');
     });
 });
-
 ```
+

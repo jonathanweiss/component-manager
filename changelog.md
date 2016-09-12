@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- Syntax highlighting for the JS snippets in README.md
 - Badges with information about license, version and file size to README.md
 
 ## [1.1.1] - 2016-09-07
