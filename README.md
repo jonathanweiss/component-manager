@@ -144,7 +144,7 @@ $.get('/server/foo/bar', function(markup) {
 });
 ```
 
-There are many solutions to wait for the `MutationObserver` to finish working before using the instances from a (somewhat sloppy) `setTimeout()` to using event.
+There are many solutions to wait for the `MutationObserver` to finish working before using the instances. They range from a (somewhat sloppy) call of `setTimeout(callback, 0)` to using events.
 
 Example 9: Wait for event before using instances
 
