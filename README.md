@@ -1,7 +1,6 @@
 # ComponentManager
 
 [![Size](https://img.shields.io/badge/min+gz-583%20b-blue.svg)](https://unpkg.com/verwalter/dist/manager.min.js)
-[![Semantic Release](https://img.shields.io/badge/semantic--release-%F0%9F%9A%80-ffffff.svg)](https://github.com/semantic-release/semantic-release)
 [![Version](https://img.shields.io/npm/v/verwalter.svg?maxAge=2592000)](https://www.npmjs.com/package/verwalter)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/mit-license.php)
 
@@ -77,10 +76,10 @@ var removeTab = function(node) {
   $(node).tabs('destroy');
 }
 
-CoreManager.register('tabs', createTab, removeTab);
+ComponentManager.register('tabs', createTab, removeTab);
 ```
 
-Every time a DOM node with the CSS class `tabs` is added to the DOM, `crateTab()` is executed with this node as parameter. As soon as a DOM node with the CSS class `tabs` is removed, `removeTabs()` (with the node as payload).
+Every time a DOM node with the CSS class `tabs` is added to the DOM, `createTab()` is executed with this node as parameter. As soon as a DOM node with the CSS class `tabs` is removed, `removeTabs()` (with the node as payload).
 
 ### Bringing it all together
 
@@ -95,7 +94,7 @@ var removeTab = function(node) {
   $(node).tabs('destroy');
 }
 
-CoreManager.register('tabs', createTab, removeTab);
+ComponentManager.register('tabs', createTab, removeTab);
 
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode').html(markup);
@@ -123,8 +122,8 @@ Sometimes one component depends on another and therefore they should be initiali
 Example 7: Components can have a priority when they are registered
 
 ```javascript
-CoreManager.register('tabs', createTab, removeTab, 10);
-CoreManager.register('gmaps', createGmap, removeGmap, 20);
+ComponentManager.register('tabs', createTab, removeTab, 10);
+ComponentManager.register('gmaps', createGmap, removeGmap, 20);
 ```
 
 You can also have a look at the second demo to see this in action.
@@ -136,7 +135,7 @@ Example 8: Instances are used too early:
 
 ```javascript
 // see Example 5 for the code of the callbacks
-CoreManager.register('tabs', createTab, removeTab);
+ComponentManager.register('tabs', createTab, removeTab);
 
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode').html(markup);
@@ -159,7 +158,7 @@ var removeTab = function(node) {
   $(node).tabs('destroy');
 }
 
-CoreManager.register('tabs', createTab, removeTab);
+ComponentManager.register('tabs', createTab, removeTab);
 
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode')
