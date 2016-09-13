@@ -4,7 +4,8 @@
   "description": "Micro utility (583 bytes compressed) that manages initialising and teardown of components (e.g. jQuery plugins) as soon as specific DOM nodes are added into the document, respectively removed from it.",
   "main": "./src/manager.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers Firefox && cat ./coverage/report-lcovonly.txt | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "./node_modules/.bin/karma start --single-run --browsers Firefox",
+    "coveralls": "cat ./coverage/report-lcovonly.txt | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
     "type": "git",
