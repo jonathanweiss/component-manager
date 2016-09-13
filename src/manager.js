@@ -4,9 +4,11 @@
  * License: MIT
  */
 (function(root, factory) {
+    /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
         // AMD
         define('ComponentManager', [], factory);
+    /* istanbul ignore next */
     } else if (typeof exports === 'object') {
         // Node, CommonJS-like
         module.exports = factory();
@@ -28,6 +30,7 @@
         mutations.forEach(function(mutation) {
 
             [].slice.call(mutation.addedNodes).forEach(function(addedNode) {
+                /* istanbul ignore else */
                 if (addedNode.tagName) {
                     [].slice.call(addedNode.querySelectorAll('[' + DATA_ATTRIBUTE + ']'))
                         .sort(function(a, b) {
@@ -36,6 +39,8 @@
                         })
                         .forEach(function(specificNode) {
                             var componentName = specificNode.getAttribute(DATA_ATTRIBUTE);
+
+                            /* istanbul ignore else */
                             if (registeredComponents[componentName]) {
                                 registeredComponents[componentName].onAdd(specificNode);
                             }
@@ -44,9 +49,12 @@
             });
 
             [].slice.call(mutation.removedNodes).forEach(function(removedNode) {
+                /* istanbul ignore else */
                 if (removedNode.tagName) {
                     [].slice.call(removedNode.querySelectorAll('[' + DATA_ATTRIBUTE + ']')).forEach(function(specificNode) {
                         var componentName = specificNode.getAttribute(DATA_ATTRIBUTE);
+
+                        /* istanbul ignore else */
                         if (registeredComponents[componentName]) {
                             registeredComponents[componentName].onRemove(specificNode);
                         }
@@ -63,16 +71,20 @@
     * @param {Function} callbackAdd Function that will be executed when a DOM node matching the selector is added to the document
     * @param {[Function=undefined]} callbackRemove Function that will be executed when a DOM node matching the selector is removed from the document
     * @param {[Number=100]} priority Important of the component with 0 being the most important.
-    * @return {undefined}
+    * @return {Boolean} true if the component has been registered, otherwise false.
     */
     var register = function(name, callbackAdd, callbackRemove, priority) {
         if (!registeredComponents[name]) {
+            /* istanbul ignore next */
             registeredComponents[name] = {
                 onAdd: callbackAdd,
                 onRemove: callbackRemove ? callbackRemove : function(){},
                 priority: priority || 100
             };
+            return true;
         }
+
+        return false;
     };
 
     /**
@@ -92,6 +104,7 @@
     * @return {undefined}
     */
     var shutdown = function() {
+        /* istanbul ignore else */
         if (observer) {
             observer.disconnect();
         }
