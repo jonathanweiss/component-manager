@@ -80,7 +80,6 @@ describe('ComponentManager', function() {
         name: 'normal',
         onAdd: function() {
           number += 100;
-          console.log(number)
         },
         onRemove: function(){}
       };
@@ -89,7 +88,6 @@ describe('ComponentManager', function() {
         name: 'important',
         onAdd: function() {
           number *= -1;
-          console.warn(number)
         },
         onRemove: function(){}
       };
