@@ -2,6 +2,7 @@
 
 [![Size](https://img.shields.io/badge/min+gz-583%20b-blue.svg)](https://unpkg.com/verwalter/dist/manager.min.js)
 [![Build](https://api.travis-ci.org/jonathanweiss/component-manager.svg?branch=master)](https://travis-ci.org/jonathanweiss/component-manager/)
+[![Coverage Status](https://coveralls.io/repos/github/jonathanweiss/component-manager/badge.svg?branch=master)](https://coveralls.io/github/jonathanweiss/component-manager?branch=master)
 [![Version](https://img.shields.io/npm/v/verwalter.svg?maxAge=2592000)](https://www.npmjs.com/package/verwalter)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/mit-license.php)
 
