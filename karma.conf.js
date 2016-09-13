@@ -62,14 +62,11 @@ module.exports = function(config) {
 
 
     coverageReporter: {
+      dir: 'coverage',
       reporters: [
-        {
-            type: 'text'
-        },
-        {
-          type : 'html',
-          dir : 'coverage/'
-        }
+        { type: 'text' },
+        { type: 'html', subdir: 'report-html' },
+        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
       ],
       instrumenterOptions: {
         istanbul: { noCompact: true }

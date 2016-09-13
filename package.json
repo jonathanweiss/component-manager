@@ -4,7 +4,7 @@
   "description": "Micro utility (583 bytes compressed) that manages initialising and teardown of components (e.g. jQuery plugins) as soon as specific DOM nodes are added into the document, respectively removed from it.",
   "main": "./src/manager.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers Firefox"
+    "test": "./node_modules/.bin/karma start --single-run --browsers Firefox && cat ./coverage/report-lcovonly.txt | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jonathanweiss/component-manager#readme",
   "devDependencies": {
+    "coveralls": "^2.11.12",
     "jasmine-core": "^2.5.1",
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",
