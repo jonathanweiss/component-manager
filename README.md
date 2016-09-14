@@ -61,13 +61,13 @@ Not only must the little snippet know all about the components that are use, but
 
 ## Creating and destroying instances "automagically"
 
-ComponentManger solves all these problems by creating instances for DOM nodes as soon as they are inserted into the DOM. It also takes care of calling the destructor functions when a DOM node is removed from the DOM.
+ComponentManager solves all these problems by creating instances for DOM nodes as soon as they are inserted into the DOM. It also takes care of calling the destructor functions when a DOM node is removed from the DOM.
 
-ComponentManager has zero dependencies and uses a universal JavaScript module to be used in any environments. It depends on `MutationOberserver` which is supported by all modern browser.
+ComponentManager has zero dependencies and uses a universal JavaScript module to be used in any environment. It depends on `MutationOberserver` which is supported by all modern browser.
 
 ### Registering a component
 
-Example 4: Register a new component and provide callback for creating instances:
+Example 4: Register a new component and provide callback for creating and removing instances:
 
 ```javascript
 var createTab = function(node) {
@@ -81,7 +81,7 @@ var removeTab = function(node) {
 ComponentManager.register('tabs', createTab, removeTab);
 ```
 
-Every time a DOM node with the CSS class `tabs` is added to the DOM, `createTab()` is executed with this node as parameter. As soon as a DOM node with the CSS class `tabs` is removed, `removeTabs()` (with the node as payload).
+Every time a DOM node with the data attribute configuration `data-component-name="tabs"` is added to the DOM, `createTab()` is executed with this node as parameter. As soon as a DOM node with this attribute and value is removed, `removeTabs()` (with the node as payload).
 
 ### Bringing it all together
 
@@ -103,7 +103,7 @@ $.get('/server/foo/bar', function(markup) {
 });
 ```
 
-We've successfully decoupled loading markup into the DOM with the creation of instances of the jQuery tab plugin. The small snippet that loads markup into the page doesn't need to know about components and the ComponentManger doesn't need to know any specifics about how a component works.
+We've successfully decoupled loading markup into the DOM from the creation of instances of the jQuery tab plugin. The small snippet that loads markup into the page doesn't need to know about components and the ComponentManager doesn't need to know any specifics about how a component works.
 Any specific code can, of course, be used in the callbacks.
 
 Example 6: How to use component-specific code in a callback:
@@ -129,6 +129,15 @@ ComponentManager.register('gmaps', createGmap, removeGmap, 20);
 ```
 
 You can also have a look at the second demo to see this in action.
+
+## Getting started
+
+There are four ways to use ComponentManager.
+
+1. Installation via bower: `bower install component-manager`
+1. Installation via NPM: `npm install verwalter`
+1. Load the minified file via [unpkg.com](https://unpkg.com/verwalter/dist/manager.min.js) `<script src="https://unpkg.com/verwalter/dist/manager.min.js"></script>`
+1. Download the [minified file](https://raw.githubusercontent.com/jonathanweiss/component-manager/master/dist/manager.min.js) and store it locally: `<script src="manager.min.js"></script>`
 
 ## Gotchas
 Please note that due to the nature of `MutationObserver` the callbacks for creating and removing instances will be called asynchronously.
