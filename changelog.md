@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Fixed typos in README.md
+- Correct sorting in Safari
 
 ## [1.1.1] - 2016-09-07
 ### Changed

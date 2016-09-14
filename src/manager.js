@@ -35,7 +35,8 @@
                     [].slice.call(addedNode.querySelectorAll('[' + DATA_ATTRIBUTE + ']'))
                         .sort(function(a, b) {
                             return registeredComponents[a.getAttribute('data-component-name')].priority >
-                                   registeredComponents[b.getAttribute('data-component-name')].priority;
+                                   registeredComponents[b.getAttribute('data-component-name')].priority ?
+                                   1 : -1
                         })
                         .forEach(function(specificNode) {
                             var componentName = specificNode.getAttribute(DATA_ATTRIBUTE);
