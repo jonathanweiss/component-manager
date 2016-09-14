@@ -1,15 +1,15 @@
 {
   "name": "verwalter",
-  "version": "1.1.1",
   "description": "Micro utility (583 bytes compressed) that manages initialising and teardown of components (e.g. jQuery plugins) as soon as specific DOM nodes are added into the document, respectively removed from it.",
   "main": "./src/manager.js",
   "scripts": {
     "test": "./node_modules/.bin/karma start --single-run --browsers Firefox",
-    "coveralls": "cat ./coverage/report-lcovonly.txt | ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "cat ./coverage/report-lcovonly.txt | ./node_modules/coveralls/bin/coveralls.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jonathanweiss/component-manager.git"
+    "url": "https://github.com/jonathanweiss/component-manager.git"
   },
   "author": "Jonathan Weiß",
   "license": "MIT",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jonathanweiss/component-manager#readme",
   "devDependencies": {
     "coveralls": "^2.11.12",
+    "cz-conventional-changelog": "^1.2.0",
     "jasmine-core": "^2.5.1",
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",
@@ -28,6 +29,12 @@
     "karma-jasmine-matchers": "^3.0.1",
     "karma-safari-launcher": "^1.0.0",
     "karma-spec-reporter": "0.0.26",
-    "safari-launcher": "^2.0.5"
+    "safari-launcher": "^2.0.5",
+    "semantic-release": "^4.3.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
