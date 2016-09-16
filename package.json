@@ -3,9 +3,13 @@
   "description": "Micro utility (583 bytes compressed) that manages initialising and teardown of components (e.g. jQuery plugins) as soon as specific DOM nodes are added into the document, respectively removed from it.",
   "main": "./src/manager.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers Firefox",
+    "dev": "npm run watch & npm run serve",
     "coveralls": "cat ./coverage/report-lcovonly.txt | ./node_modules/coveralls/bin/coveralls.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "optimize": "./node_modules/.bin/uglifyjs ./src/manager.js --compress --mangle > ./dist/manager.min.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "serve": "./node_modules/.bin/serve --no-logs --port 1234",
+    "test": "./node_modules/.bin/karma start --single-run --browsers Firefox",
+    "watch": "npm-watch"
   },
   "repository": {
     "type": "git",
@@ -17,6 +21,15 @@
     "url": "https://github.com/jonathanweiss/component-manager/issues"
   },
   "homepage": "https://github.com/jonathanweiss/component-manager#readme",
+  "watch": {
+    "optimize": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "js",
+      "quiet": true
+    }
+  },
   "devDependencies": {
     "coveralls": "^2.11.12",
     "cz-conventional-changelog": "^1.2.0",
@@ -29,8 +42,11 @@
     "karma-jasmine-matchers": "^3.0.1",
     "karma-safari-launcher": "^1.0.0",
     "karma-spec-reporter": "0.0.26",
+    "npm-watch": "^0.1.6",
     "safari-launcher": "^2.0.5",
-    "semantic-release": "^4.3.5"
+    "semantic-release": "^4.3.5",
+    "serve": "^1.4.0",
+    "uglify-js": "^2.7.3"
   },
   "config": {
     "commitizen": {

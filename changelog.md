@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Added
+- Optimize work flow: add `serve`, `watch` and `uglifyjs` to keep the minified version up to date and start both the web server and the watch tassk with a single command.
+
 ## [2.0.0] - 2016-09-07
 ### Added
 - Integrate travis
