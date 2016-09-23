@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- Add `.editorconfig`. See http://EditorConfig.org for details
 - Optimize work flow: add `serve`, `watch` and `uglifyjs` to keep the minified version up to date and start both the web server and the watch tassk with a single command.
 
 ## [2.0.0] - 2016-09-07
