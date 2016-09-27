@@ -1,4 +1,4 @@
-/* global ComponentManager, it, describe, expect, spyOn, beforeEach */
+/* global ComponentManager, it, describe, expect, spyOn, beforeEach, afterEach */
 describe('ComponentManager', function () {
   it('attaches itself to the Window object when RequireJS is not available', function () {
     expect(window.ComponentManager).not.toBe(undefined)

@@ -8,7 +8,7 @@
     "optimize": "./node_modules/.bin/uglifyjs ./src/manager.js --compress --mangle > ./dist/manager.min.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "serve": "./node_modules/.bin/serve --no-logs --port 1234",
-    "test": "standard && src/**/*.js ./node_modules/.bin/karma start --single-run --browsers Firefox",
+    "test": "standard && ./node_modules/.bin/karma start --single-run --browsers Firefox",
     "watch": "npm-watch"
   },
   "repository": {
@@ -53,5 +53,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "standard": {
+    "ignore": [
+        "karma.conf.js"
+    ]
   }
 }
