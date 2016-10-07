@@ -14,6 +14,12 @@ module.exports = function(config) {
   }
 
   var customLaunchers = {
+    sl_chrome_46: {
+      base: 'SauceLabs',
+      browserName: 'chrome',
+      version: '46'
+    },
+
     sl_chrome_dev: {
       base: 'SauceLabs',
       browserName: 'chrome',
@@ -24,6 +30,12 @@ module.exports = function(config) {
       base: 'SauceLabs',
       browserName: 'chrome',
       version: 'beta'
+    },
+
+    sl_firefox_44: {
+      base: 'SauceLabs',
+      browserName: 'firefox',
+      version: '44'
     },
 
     sl_firefox_dev: {
@@ -38,10 +50,29 @@ module.exports = function(config) {
       version: 'beta'
     },
 
+    sl_ios_safari_7: {
+      base: 'SauceLabs',
+      browserName: 'iphone',
+      version: '7.1'
+    },
+
     sl_ios_safari_8: {
       base: 'SauceLabs',
       browserName: 'iphone',
       version: '8.4'
+    },
+
+    sl_ios_safari_9: {
+      base: 'SauceLabs',
+      browserName: 'iphone',
+      version: '9.1'
+    },
+
+    sl_safari_7: {
+      base: 'SauceLabs',
+      browserName: 'safari',
+      platform: 'OS X 10.9',
+      version: '7'
     },
 
     sl_safari_8: {
@@ -49,6 +80,13 @@ module.exports = function(config) {
       browserName: 'safari',
       platform: 'OS X 10.10',
       version: '8'
+    },
+
+    sl_safari_9: {
+      base: 'SauceLabs',
+      browserName: 'safari',
+      platform: 'OS X 10.11',
+      version: '9.0'
     },
 
     sl_ie_11: {
@@ -62,6 +100,13 @@ module.exports = function(config) {
       base: 'SauceLabs',
       browserName: 'microsoftedge',
       platform: 'Windows 10'
+    },
+
+    sl_android_4: {
+      base: 'SauceLabs',
+      browserName: 'android',
+      platform: 'Linux',
+      version: '4.1'
     },
 
     sl_android_5: {
