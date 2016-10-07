@@ -1,5 +1,82 @@
+var fs = require('fs');
+var args = process.argv.slice(2);
+var isCI = args.length >= 2 && args[1] === '--ci';
+
 module.exports = function(config) {
+  if (isCI && !process.env.SAUCE_USERNAME) {
+    if (!fs.existsSync('sauce.json')) {
+      console.log('Create a sauce.json with your credentials based on the sauce-sample.json file.');
+      process.exit(1);
+    } else {
+      process.env.SAUCE_USERNAME = require('./sauce').username;
+      process.env.SAUCE_ACCESS_KEY = require('./sauce').accessKey;
+    }
+  }
+
+  var customLaunchers = {
+    sl_chrome_dev: {
+      base: 'SauceLabs',
+      browserName: 'chrome',
+      version: 'dev'
+    },
+
+    sl_chrome_beta: {
+      base: 'SauceLabs',
+      browserName: 'chrome',
+      version: 'beta'
+    },
+
+    sl_firefox_dev: {
+      base: 'SauceLabs',
+      browserName: 'firefox',
+      version: 'dev'
+    },
+
+    sl_firefox_beta: {
+      base: 'SauceLabs',
+      browserName: 'firefox',
+      version: 'beta'
+    },
+
+    sl_ios_safari_8: {
+      base: 'SauceLabs',
+      browserName: 'iphone',
+      version: '8'
+    },
+
+    sl_safari_8: {
+      base: 'SauceLabs',
+      browserName: 'safari',
+      platform: 'OS X 10.10',
+      version: '8'
+    },
+
+    sl_ie_11: {
+      base: 'SauceLabs',
+      browserName: 'internet explorer',
+      platform: 'Windows 8.1',
+      version: '11'
+    },
+
+    sl_edge: {
+      base: 'SauceLabs',
+      browserName: 'microsoftedge',
+      platform: 'Windows 10'
+    },
+
+    sl_android_5: {
+      base: 'SauceLabs',
+      browserName: 'android',
+      platform: 'Linux',
+      version: '5.1'
+    }
+  };
+
   config.set({
+    // test results reporter to use
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    reporters: ['spec', 'coverage', 'saucelabs'],
+
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -29,11 +106,6 @@ module.exports = function(config) {
     },
 
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec', 'coverage'],
-
     // web server port
     port: 9876,
 
@@ -53,8 +125,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'Firefox', 'Safari'],
-
+    browsers: isCI ? Object.keys(customLaunchers) : ['Chrome', 'Firefox', 'Safari'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -72,6 +143,12 @@ module.exports = function(config) {
         istanbul: { noCompact: true }
       }
     },
+
+    customLaunchers: customLaunchers,
+
+    sauceLabs: {
+        testName: 'ComponentManager Unit Tests'
+    }
 
   })
 }

@@ -8,7 +8,8 @@
     "optimize": "./node_modules/.bin/uglifyjs ./src/manager.js --compress --mangle > ./dist/manager.min.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "serve": "./node_modules/.bin/serve --no-logs --port 1234",
-    "test": "standard && ./node_modules/.bin/karma start --single-run --browsers Firefox",
+    "test-local": "standard && ./node_modules/.bin/karma start --single-run",
+    "test": "standard && ./node_modules/.bin/karma start --ci --single-run",
     "watch": "npm-watch"
   },
   "repository": {
@@ -41,6 +42,7 @@
     "karma-jasmine": "^1.0.2",
     "karma-jasmine-matchers": "^3.0.1",
     "karma-safari-launcher": "^1.0.0",
+    "karma-sauce-launcher": "^1.0.0",
     "karma-spec-reporter": "0.0.26",
     "npm-watch": "^0.1.6",
     "safari-launcher": "^2.0.5",
@@ -56,7 +58,7 @@
   },
   "standard": {
     "ignore": [
-        "karma.conf.js"
+      "karma.conf.js"
     ]
   }
 }

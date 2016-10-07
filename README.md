@@ -8,6 +8,9 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Version](https://img.shields.io/npm/v/verwalter.svg?maxAge=2592000)](https://www.npmjs.com/package/verwalter)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/mit-license.php)
+
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/jonathanweiss.svg)](https://saucelabs.com/u/jonathanweiss)
+
 ## What is this?
 Utility that takes care of creating and destroying instances (e.g. of jQuery plugins) as soon as specific DOM nodes are added to the document, respectively removed from the document.
 Universal  minimal (1.2 KB, 583 bytes compressed) helper with zero dependencies.
