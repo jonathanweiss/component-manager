@@ -6,10 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- Add chapter about known issues in `README.md`
+- Add npm task `karma` for local testing with browsers that keep running after the test has finished
 - Use Saucelabs for cross-browser / cross-device unit testing
 - Use JavaScript Standard Style for JS style guide
 - Add `.editorconfig`. See http://EditorConfig.org for details
 - Optimize work flow: add `serve`, `watch` and `uglifyjs` to keep the minified version up to date and start both the web server and the watch tassk with a single command.
+
+### Changed
+- Adjust test for `onRemove` callback to run in IE11
 
 ## [2.0.0] - 2016-09-07
 ### Added

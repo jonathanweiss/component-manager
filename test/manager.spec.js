@@ -67,7 +67,7 @@ describe('ComponentManager', function () {
     ComponentManager.init()
 
     fixtureNode.innerHTML = testNode
-    fixtureNode.innerHTML = 'empty!'
+    fixtureNode.removeChild(fixtureNode.childNodes[0])
 
     window.setTimeout(function () {
       expect(component.onRemove).toHaveBeenCalled()

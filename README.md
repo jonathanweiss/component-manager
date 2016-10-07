@@ -185,3 +185,7 @@ $.get('/server/foo/bar', function(markup) {
 });
 ```
 
+
+## Known issues
+In IE11 the list of child nodes is empty when nodes are removed when the property `innerHTML` is set. This is a [known issue in IE11](https://connect.microsoft.com/IE/feedback/details/817132/ie-11-childnodes-are-missing-from-mutationobserver-mutations-removednodes-after-setting-innerhtml) that won't be fixed.
+It prevents the callback for remove from being executed. If you need to support IE11 and use the remove callback be sure to include a [polyfill](https://github.com/talee/mutationobserver-polyfill) for `MutationObserver`.
