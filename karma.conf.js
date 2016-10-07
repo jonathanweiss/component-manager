@@ -41,7 +41,7 @@ module.exports = function(config) {
     sl_ios_safari_8: {
       base: 'SauceLabs',
       browserName: 'iphone',
-      version: '8'
+      version: '8.4'
     },
 
     sl_safari_8: {
