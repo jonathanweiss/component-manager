@@ -147,7 +147,9 @@ module.exports = function(config) {
     customLaunchers: customLaunchers,
 
     sauceLabs: {
-        testName: 'ComponentManager Unit Tests'
+        testName: 'ComponentManager Unit Tests',
+        public: 'public',
+        build: process.env.TRAVIS_BUILD_NUMBER
     }
 
   })
