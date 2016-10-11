@@ -49,7 +49,7 @@
     "safari-launcher": "^2.0.5",
     "semantic-release": "^4.3.5",
     "serve": "^1.4.0",
-    "standard": "^8.2.0",
+    "standard": "^8.4.0",
     "uglify-js": "^2.7.3"
   },
   "config": {
