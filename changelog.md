@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Adjust test for `onRemove` callback to run in IE11
+- Increase captureTimeout for Karma
 
 ## [2.0.0] - 2016-09-07
 ### Added

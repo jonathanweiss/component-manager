@@ -125,6 +125,8 @@ module.exports = function(config) {
     frameworks: ['jasmine', 'jasmine-matchers'],
 
 
+    captureTimeout: 600000,
+
     // list of files / patterns to load in the browser
     files: [
       'src/*.js',
