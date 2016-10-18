@@ -4,6 +4,7 @@
   "main": "./src/manager.js",
   "scripts": {
     "dev": "npm run watch & npm run serve",
+    "commit": "git-cz -n",
     "coveralls": "cat ./coverage/report-lcovonly.txt | ./node_modules/coveralls/bin/coveralls.js",
     "optimize": "./node_modules/.bin/uglifyjs ./src/manager.js --compress --mangle > ./dist/manager.min.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",

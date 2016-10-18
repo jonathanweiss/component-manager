@@ -5,7 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.2.1] - 2016-10-18
 ### Added
+- Add NPM command to commit using `commitizen`
 - Add chapter about known issues in `README.md`
 - Add npm task `karma` for local testing with browsers that keep running after the test has finished
 - Use Saucelabs for cross-browser / cross-device unit testing
@@ -14,10 +17,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Optimize work flow: add `serve`, `watch` and `uglifyjs` to keep the minified version up to date and start both the web server and the watch tassk with a single command.
 
 ### Changed
+- Update version for bower
 - Adjust test for `onRemove` callback to run in IE11
 - Increase captureTimeout for Karma
 
-## [2.0.0] - 2016-09-07
+## [1.2.0] - 2016-09-07
 ### Added
 - Integrate travis
 - Write unit tests
