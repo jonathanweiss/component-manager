@@ -48,7 +48,7 @@
     "karma-spec-reporter": "0.0.26",
     "npm-watch": "^0.1.6",
     "safari-launcher": "^2.0.5",
-    "semantic-release": "^4.3.5",
+    "semantic-release": "^6.3.2",
     "serve": "^1.4.0",
     "standard": "^8.4.0",
     "uglify-js": "^2.7.3"
