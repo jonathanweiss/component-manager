@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- Switch from david-dm.org to versioneye.com to show a badge that indicates the status of the dependencies
 
 ## [1.2.1] - 2016-10-18
 ### Added

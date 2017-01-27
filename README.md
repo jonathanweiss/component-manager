@@ -3,7 +3,7 @@
 [![Size](https://img.shields.io/badge/min+gz-583%20b-blue.svg)](https://unpkg.com/verwalter/dist/manager.min.js)
 [![Build](https://api.travis-ci.org/jonathanweiss/component-manager.svg?branch=master)](https://travis-ci.org/jonathanweiss/component-manager/)
 [![Coverage Status](https://coveralls.io/repos/github/jonathanweiss/component-manager/badge.svg?branch=master)](https://coveralls.io/github/jonathanweiss/component-manager?branch=master)
-[![devDependencies Status](https://david-dm.org/jonathanweiss/component-manager/dev-status.png)](https://david-dm.org/jonathanweiss/component-manager?type=dev)
+[![Dependency Status](https://www.versioneye.com/user/projects/588b52d01618a7004ce168db/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/588b52d01618a7004ce168db)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Version](https://img.shields.io/npm/v/verwalter.svg?maxAge=2592000)](https://www.npmjs.com/package/verwalter)
@@ -40,10 +40,10 @@ $.get('/server/foo/bar', function(markup) {
 This approach is problematic because 
 
   1. should one just query for every plugin that is known to the system?
-  1. should the little snippet **know** what kind of plugins are used in the response?
- 
+  2. should the little snippet **know** what kind of plugins are used in the response?
+
 These questions show the problem: in this case the separation of concerns is violated! Every piece of code that deals with loading markup must either know what plugins are expected in the result or know the complete list of plugins used on the page.
-  
+
 Loading data from the server is not the only place where the markup is changed. JavaScript templates are often used to create HTML markup during runtime. 
 
 ### Destroying instances during runtime
@@ -140,9 +140,9 @@ You can also have a look at the second demo to see this in action.
 There are four ways to use ComponentManager.
 
 1. Installation via bower: `bower install component-manager`
-1. Installation via NPM: `npm install verwalter`
-1. Load the minified file via [unpkg.com](https://unpkg.com/verwalter/dist/manager.min.js) `<script src="https://unpkg.com/verwalter/dist/manager.min.js"></script>`
-1. Download the [minified file](https://raw.githubusercontent.com/jonathanweiss/component-manager/master/dist/manager.min.js) and store it locally: `<script src="manager.min.js"></script>`
+2. Installation via NPM: `npm install verwalter`
+3. Load the minified file via [unpkg.com](https://unpkg.com/verwalter/dist/manager.min.js) `<script src="https://unpkg.com/verwalter/dist/manager.min.js"></script>`
+4. Download the [minified file](https://raw.githubusercontent.com/jonathanweiss/component-manager/master/dist/manager.min.js) and store it locally: `<script src="manager.min.js"></script>`
 
 ## Gotchas
 Please note that due to the nature of `MutationObserver` the callbacks for creating and removing instances will be called asynchronously.
