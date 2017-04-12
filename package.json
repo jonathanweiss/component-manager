@@ -45,7 +45,7 @@
     "karma-jasmine-matchers": "^3.0.1",
     "karma-safari-launcher": "^1.0.0",
     "karma-sauce-launcher": "^1.0.0",
-    "karma-spec-reporter": "0.0.30",
+    "karma-spec-reporter": "0.0.31",
     "npm-watch": "^0.1.6",
     "safari-launcher": "^2.0.5",
     "semantic-release": "^6.3.2",
