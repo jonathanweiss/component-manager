@@ -8,7 +8,7 @@
     "coveralls": "cat ./coverage/report-lcovonly.txt | ./node_modules/coveralls/bin/coveralls.js",
     "optimize": "./node_modules/.bin/uglifyjs ./src/manager.js --compress --mangle > ./dist/manager.min.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "serve": "./node_modules/.bin/serve --no-logs --port 1234",
+    "serve": "./node_modules/.bin/serve --port 1234",
     "test-local": "standard && ./node_modules/.bin/karma start --single-run",
     "karma": "standard && ./node_modules/.bin/karma start",
     "test": "standard && ./node_modules/.bin/karma start --ci --single-run",
