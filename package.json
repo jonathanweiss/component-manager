@@ -51,7 +51,7 @@
     "semantic-release": "^6.3.2",
     "serve": "^6.0.2",
     "standard": "^10.0.1",
-    "uglify-js": "^3.0.23"
+    "uglify-js": "^3.3.7"
   },
   "config": {
     "commitizen": {
