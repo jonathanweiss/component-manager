@@ -178,7 +178,7 @@ ComponentManager.register('tabs', createTab, removeTab);
 
 $.get('/server/foo/bar', function(markup) {
   $('#theTargetNode')
-    html(markup)
+    .html(markup)
     .one('TabCreated', '.tabs', function() {
       $('#theTargetNode .tabs').eq(0).tabs('load', '#foo');
     });
