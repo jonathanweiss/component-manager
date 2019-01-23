@@ -50,46 +50,6 @@ module.exports = function(config) {
       version: 'beta'
     },
 
-    // This browser is creating timeouts at the moment...
-    // sl_ios_safari_7: {
-    //   base: 'SauceLabs',
-    //   browserName: 'iphone',
-    //   version: '7.1'
-    // },
-
-    sl_ios_safari_8: {
-      base: 'SauceLabs',
-      browserName: 'iphone',
-      version: '8.4'
-    },
-
-    sl_ios_safari_9: {
-      base: 'SauceLabs',
-      browserName: 'iphone',
-      version: '9.1'
-    },
-
-    sl_safari_7: {
-      base: 'SauceLabs',
-      browserName: 'safari',
-      platform: 'OS X 10.9',
-      version: '7'
-    },
-
-    sl_safari_8: {
-      base: 'SauceLabs',
-      browserName: 'safari',
-      platform: 'OS X 10.10',
-      version: '8'
-    },
-
-    sl_safari_9: {
-      base: 'SauceLabs',
-      browserName: 'safari',
-      platform: 'OS X 10.11',
-      version: '9.0'
-    },
-
     sl_ie_11: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
