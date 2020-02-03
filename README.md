@@ -2,14 +2,13 @@
 
 [![Size](https://img.shields.io/badge/min+gz-583%20b-blue.svg)](https://unpkg.com/verwalter/dist/manager.min.js)
 [![Build](https://api.travis-ci.org/jonathanweiss/component-manager.svg?branch=master)](https://travis-ci.org/jonathanweiss/component-manager/)
+[![Build Status](https://app.saucelabs.com/buildstatus/jonathanfweiss)](https://app.saucelabs.com/builds/e0be3fe52a43466f8de9235210e900e8)
 [![Coverage Status](https://coveralls.io/repos/github/jonathanweiss/component-manager/badge.svg?branch=master)](https://coveralls.io/github/jonathanweiss/component-manager?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/588b52d01618a7004ce168db/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/588b52d01618a7004ce168db)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Version](https://img.shields.io/npm/v/verwalter.svg?maxAge=2592000)](https://www.npmjs.com/package/verwalter)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/mit-license.php)
-
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/jonathanfweiss.svg)](https://saucelabs.com/u/jonathanfweiss)
 
 ## What is this?
 Utility that takes care of creating and destroying instances (e.g. of jQuery plugins) as soon as specific DOM nodes are added to the document, respectively removed from the document.
