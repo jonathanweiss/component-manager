@@ -34,7 +34,7 @@
     }
   },
   "devDependencies": {
-    "coveralls": "^2.11.12",
+    "coveralls": "^3.0.10",
     "cz-conventional-changelog": "^2.0.0",
     "jasmine-core": "^2.6.2",
     "karma": "^2.0.0",
